@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>BLerh</title>
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <form id="frmEmployeeSearch" enctype="multipart/form-data">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <input type="submit" id="btnSearch" value="Submit"></p>
+  </form>
+  <br>
+  <!-- leave the button outside of the form so that it's not submitted with the form fields -->
+  <div>
+    <input type="button" id="btnSearch" value="Search" name="btnSearch">
+  </div>
+
+  <h2 align="center">Results</h2>
+  <table width="400" border="1" cellpadding="5" align="center">
+    <tr>
+      <th>Last Name</th>
+      <th>Given Names</th>
+      <th>Age</th>
+      <th>Salary</th>
+    </tr>
+    <tbody id=results> </tbody>
+  </table>
+  <br>
+  <div id="errors" align="center"> </div>
+</body>
+
+</html>
