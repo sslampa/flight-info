@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var button = document.getElementById('btnSearch')
-  button.addEventListener( 'click', searchForEmployee('frmEmployeeSearch') );
+  var mybutton = document.getElementById('btnSearch');
+  mybutton.addEventListener('click', searchForEmployee )
 });
 
 
-function searchForEmployee( formName )
+function searchForEmployee()
 {
   //this is where to perform validation
   var uInput = document.getElementById('name');
@@ -16,12 +16,16 @@ function searchForEmployee( formName )
   } else { return localStorage.getItem(uInput.value) }
 }
 
+
+var hRequest = new XMLHttpRequest();
+var url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDkhnNt01PA-kqLsfDBwTJndLsxlKvEJpc'
+
 function getThatData( origin ) {
-  if (window.XMLHttpRequest) {
-    httpRequest = new XMLHttpRequest();
-  }
-  httpRequest.onreadystatechange = function() {
-    console.log("it worked")
-  }
-  httpRequest.open('POST', )
+  hRequest.open('POST', url, true);
+  hRequest.onreadystatechange = handleIt();
+  hRequest.send();
+}
+
+function handleIt() {
+  console.log("Oh, it's handled.");
 }
