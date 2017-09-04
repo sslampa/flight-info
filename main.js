@@ -18,14 +18,43 @@ function searchForEmployee()
 
 
 var hRequest = new XMLHttpRequest();
-var url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDkhnNt01PA-kqLsfDBwTJndLsxlKvEJpc'
+// My Key
+var url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyDzCQffVMxuT42BQDgCuK5w1o_I1uHYRcw'
+
+// Your Key
+// var url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyDkhnNt01PA-kqLsfDBwTJndLsxlKvEJpc'
 
 function getThatData( origin ) {
+var someRequest =
+{
+ "request": {
+  "passengers": {
+   "adultCount": 2
+  },
+  "slice": [
+   {
+    "kind": "qpxexpress#sliceInput",
+    "origin": "LAX",
+    "destination": "SYD",
+    "date": "2017-11-20"
+   }
+  ]
+ }
+};
   hRequest.open('POST', url, true);
-  hRequest.onreadystatechange = handleIt();
-  hRequest.send();
+  hRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  hRequest.send(JSON.stringify(someRequest));
+  // hRequest.onreadystatechange = handleIt();
+  hRequest.onreadystatechange = function () {
+    if (hRequest.status == 200) {
+      console.log("Oh, it's handled.");
+    }
+  };
 }
 
-function handleIt() {
-  console.log("Oh, it's handled.");
-}
+// function handleIt() {
+//   console.log(hRequest);
+//   if (hRequest.status == 200) {
+//     console.log("Oh, it's handled.");
+//   }
+// }
